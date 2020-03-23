@@ -1,9 +1,13 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
-d3.csv("test.csv")
-    .row(function(d){return{date:parseDate(d.date),price:Number(d.price.trim().slice(1))};})
-    .get(function(error,data){
+
+d3.csv("test.csv", function(d){
+    return {
+        date:parseDate(d.date),
+        price:Number(d.price.trim().slice(1))
+    };
+  }).then(function(data){
+        console.log('data: ')
         console.log(data)
-    
 
         var height = 400;
         var width = 600;

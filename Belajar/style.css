@@ -1,0 +1,48 @@
+html, body  {
+    margin :11;
+    height: 100%;
+
+}
+
+line {
+    stroke: brown
+ 
+}
+g.grp3 circle,
+g.grp3 path,
+g.grp4 path{
+    stroke: orange;
+    fill: none;
+    stroke-width:3;  
+
+}
+
+g.tick line {
+    stroke: greenyellow;
+}
+g.tick line {
+    font-size: 12px;
+    fill: blue;
+}
+g.hidden line,
+g.hidden path {
+    display: none;
+}
+
+
+g.grp3 circle,
+g.grp3 path,
+g.grp4 path,
+g.grp0 circle {
+        stroke: orange;
+        fill: none;
+        stroke-width: 3;
+        }
+g.tick line {
+    stroke:green
+}
+
+g.tick text {
+    font-size : 11px;
+    fill: lawngreen;
+}

@@ -1,9 +1,13 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
-d3.csv("test.csv")
-    .row(function(d){return{date:parseDate(d.date),price:Number(d.price.trim().slice(1))};})
-    .get(function(error,data){
+
+d3.csv("test.csv", function(d){
+    return {
+        date:parseDate(d.date),
+        price:Number(d.price.trim().slice(1))
+    };
+  }).then(function(data){
+        console.log('data: ')
         console.log(data)
-    
 
         var height = 400;
         var width = 600;
@@ -20,8 +24,8 @@ d3.csv("test.csv")
                     .domain([minDate,maxDate])
                     .range ([0,width]);
 
-        var yaxis = d3.axisLeft(y);
-        var xaxis = d3.axisBottom(x);
+        var yAxis = d3.axisLeft(y);
+        var xAxis = d3.axisBottom(x);
 
     
 
@@ -35,6 +39,7 @@ d3.csv("test.csv")
                      .x(function(d){return x (d.date);})
                      .y(function(d){return y (d.price);});
         chartGroup.append('path').attr('d',line(data));
-
+        chartGroup.append("g").attr("class","x axis").attr("transform","translate(0,"+height+")").call(xAxis);
+        chartGroup.append("g").attr("class","y axis").call(yAxis);
 
 });
